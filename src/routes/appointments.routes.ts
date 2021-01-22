@@ -5,7 +5,11 @@ import { startOfHour, parseISO } from 'date-fns';
 import CreateAppintmentService from '../services/CreateAppointmentService';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 
+import ensureAuth from '../middlewares/ensureAuthenticated';
+
 const appointmentsRouter = Router();
+
+appointmentsRouter.use(ensureAuth);
 
 
 appointmentsRouter.get('/', async (request, response) => {
